@@ -40,11 +40,12 @@ def runGame():
 
     # init Player
     player = Player()
+    bullet = Bullet(player.rect.x, player.rect.y)
 
 
     level_list = []
-    level_list.append(levels.Level_01(player))
-    level_list.append(levels.Level_02(player))
+    level_list.append(levels.Level_01(player, bullet))
+    level_list.append(levels.Level_02(player, bullet))
 
 
     # set the current level
@@ -52,12 +53,12 @@ def runGame():
     current_level = level_list[current_level_no]
     player.level = current_level
 
-    bullet = Bullet(player.rect.x, player.rect.y)
+
     # Sprite Groups
     active_sprite_list = pygame.sprite.Group()
     bullets = pygame.sprite.Group()
     active_sprite_list.add(bullet)
-    bullet.add(bullets)
+    bullets.add(bullet)
 
 
     player.rect.x = 340

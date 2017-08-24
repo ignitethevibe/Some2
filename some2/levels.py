@@ -8,7 +8,7 @@ from player import Bullet
 class Level():
     # generic super class used to define level
 
-    def __init__(self, player):
+    def __init__(self, player, bullet):
         # Constructor. Pass in a handle to player. needed for when collides
 
         # Lists of sprites used in all levels
@@ -28,7 +28,7 @@ class Level():
         self.enemy_list = pygame.sprite.Group()
         self.bullet_list = pygame.sprite.Group()
         self.player = player
-        self.bullet = Bullet(player.rect.x, player.rect.y)
+        self.bullet = bullet
 
 
     # update everything on this level
@@ -71,16 +71,16 @@ class Level():
 class Level_01(Level):
     # Definiton for Level 1
 
-    def __init__(self, player):
+    def __init__(self, player, bullet):
         # create level 1
 
         # call the constructor
-        Level.__init__(self, player)
+        Level.__init__(self, player, bullet)
 
         self.background = pygame.image.load('cityscape.png').convert()
         self.background.set_colorkey(constants.white)
         self.level_limit = -4000
-        bullet = Bullet(player.rect.x, player.rect.y)
+        #bullet = Bullet(player.rect.x, player.rect.y)
         self.bullet_list.add(bullet)
 
         # Array with type of platform, and x, y location of the platform
@@ -119,6 +119,10 @@ class Level_01(Level):
                 [platforms.REC_O_TOP1, 2642, 525],
                 [platforms.REC_O_TOP1, 2739, 525],
                 [platforms.REC_O_TOP1, 2832, 525],
+                [platforms.REC_O_TOP1, 2925, 525],
+                [platforms.REC_O_TOP1, 2918, 525],
+                [platforms.REC_O_TOP1, 3011, 525],
+                [platforms.REC_O_TOP1, 3106, 525],
 
                     ]
 
@@ -144,8 +148,8 @@ class Level_01(Level):
 
 # add Level 2
 class Level_02(Level):
-    def __init__(self, player):
-        Level.__init__(self, player)
+    def __init__(self, player, bullet):
+        Level.__init__(self, player, bullet)
 
         self.background = pygame.image.load('pokeclouds.png').convert()
         self.background.set_colorkey(constants.white)
