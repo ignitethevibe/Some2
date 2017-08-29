@@ -46,8 +46,8 @@ def runGame():
 
 
     level_list = []
-    level_list.append(levels.Level_01(player, bullet))
-    level_list.append(levels.Level_02(player, bullet))
+    level_list.append(levels.Level_01(player, bullet, drag))
+    level_list.append(levels.Level_02(player, bullet, drag))
 
 
     # set the current level
@@ -66,6 +66,8 @@ def runGame():
     player.rect.x = 340
     player.rect.y = constants.SCREEN_HEIGHT - player.rect.height + 100
     active_sprite_list.add(player)
+    enemies.add(drag)
+    active_sprite_list.add(drag)
     #active_sprite_list.add(bullet)
     #bullets.add(bullet)
     bullet_count = 0
@@ -138,6 +140,17 @@ def runGame():
                 current_level_no += 1
                 current_level = level_list[current_level_no]
                 player.level = current_level
+
+        # player collide with FlyEnemy
+        flyhit = pygame.sprite.spritecollide(player, enemies, True)
+        for hit in flyhit:
+            player.kill()
+            done = True
+
+        # - Batarang Kill Enemies 
+        bathit = pygame.sprite.groupcollide(enemies, bullets, True, True)
+        for hit in bathit:
+            enemies.kill()
 
         # -- Win Screen once player reaches end
         #if current_level_no > len(level_list)-2:

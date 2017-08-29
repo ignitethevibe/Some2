@@ -32,7 +32,7 @@ class FlyEnemy(pygame.sprite.Sprite):
         self.image = self.anim
         self.rect = self.image.get_rect()
         self.rect.x = random.randrange(1200, 4500)
-        self.rect.y = random.randrange(5, 120)
+        self.rect.y = random.randrange(5, 150)
         self.speedy = random.randrange(1, 8)
         self.speedx = random.randrange(-6,-3)
 
@@ -45,10 +45,14 @@ class FlyEnemy(pygame.sprite.Sprite):
 
         self.rect.x += self.speedx
 
+        if self.rect.x <= 0:
+            self.kill()
+
+        #hit = pygame.sprite.spritecollide(self, self.player)
+
         # Check the boundaries and see if we need to reverse
         #if self.rect.bottom > self.boundary_bottom or self.rect.top < self.boundary_top:
             #self.change_y *= -1
-
 
         #cur_pos = self.rect.x - self.level.world_shift
         #if cur_pos < self.boundary_left or cur_pos > self.boundary_right:

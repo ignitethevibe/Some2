@@ -9,7 +9,7 @@ from player import Bullet
 class Level():
     # generic super class used to define level
 
-    def __init__(self, player, bullet):
+    def __init__(self, player, bullet, drag):
         # Constructor. Pass in a handle to player. needed for when collides
 
         # Lists of sprites used in all levels
@@ -30,6 +30,7 @@ class Level():
         self.bullet_list = pygame.sprite.Group()
         self.player = player
         self.bullet = bullet
+        self.drag = drag
 
 
     # update everything on this level
@@ -72,17 +73,20 @@ class Level():
 class Level_01(Level):
     # Definiton for Level 1
 
-    def __init__(self, player, bullet):
+    def __init__(self, player, bullet, drag):
         # create level 1
 
         # call the constructor
-        Level.__init__(self, player, bullet)
+        Level.__init__(self, player, bullet, drag)
 
         self.background = pygame.image.load('cityscape.png').convert()
         self.background.set_colorkey(constants.white)
         self.level_limit = -4000
         #bullet = Bullet(player.rect.x, player.rect.y)
         self.bullet_list.add(bullet)
+        for i in range(6):
+            drag = FlyEnemy()
+            self.enemy_list.add(drag)
 
         # Array with type of platform, and x, y location of the platform
         level = [[platforms.METAL_BLOCK1, 420, 565],
@@ -124,6 +128,18 @@ class Level_01(Level):
                 [platforms.REC_O_TOP1, 2918, 525],
                 [platforms.REC_O_TOP1, 3011, 525],
                 [platforms.REC_O_TOP1, 3106, 525],
+                [platforms.BIG_BLOCK_RIGHT2, 3203, 530],
+                [platforms.BIG_BLOCK_RIGHT, 3203, 460],
+                [platforms.BIG_BLOCK_LEFT2, 3274, 530],
+                [platforms.BIG_BLOCK_LEFT, 3274, 460],
+                [platforms.BLOCK_O_TOP, 3345, 475],
+                [platforms.BLOCK_O_TOP, 3388, 475],
+                [platforms.BLOCK_O_TOP, 3421, 475],
+                [platforms.BLOCK_O_TOP, 3464, 475],
+                [platforms.BLOCK_O_TOP, 3507, 475],
+                [platforms.GEAR_BLOCK1, 3345, 520],
+                [platforms.GEAR_BLOCK1, 3345, 559],
+                [platforms.GEAR_BLOCK1, 3345, 598],
 
                     ]
 
@@ -146,15 +162,14 @@ class Level_01(Level):
         block.level = self
         self.platform_list.add(block)
 
-        for i in range(3):
-            drag = FlyEnemy()
-            self.enemy_list.add(drag)
+
+
 
 
 # add Level 2
 class Level_02(Level):
-    def __init__(self, player, bullet):
-        Level.__init__(self, player, bullet)
+    def __init__(self, player, bullet, drag):
+        Level.__init__(self, player, bullet, drag)
 
         self.background = pygame.image.load('pokeclouds.png').convert()
         self.background.set_colorkey(constants.white)

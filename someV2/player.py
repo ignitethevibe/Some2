@@ -4,7 +4,7 @@ import levels
 
 from platforms import MovingPlatform
 from spritesheet_functions import SpriteSheet
-
+ 
     # --- BATMAN Player Sprite
 class Player(pygame.sprite.Sprite):
     # this class represents the bar at the bottom that the player controls

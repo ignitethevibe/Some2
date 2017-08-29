@@ -20,8 +20,8 @@ GRINDO              = (1497, 887, 89, 48)
 BIG_BLOCK           = (1591, 986, 86,91)
 BIG_BLOCK_RIGHT     = (1864, 1033, 71, 70)
 BIG_BLOCK_LEFT      = (1974, 1032, 71, 70)
-BIG_BLOCK_RIGHT2    = (1864, 1139, 71, 70)
-BIG_BLOCK_LEFT2     = (1976, 1142, 71, 70)
+BIG_BLOCK_RIGHT2    = (1864, 1139, 71, 70) # bottom
+BIG_BLOCK_LEFT2     = (1976, 1142, 71, 70) # bottom 
 BLOCK_O_TOP         = (1635, 1168, 43 ,48) # 0_TOP = Orange Top
 REC_O_TOP1          = (1678, 964 ,97, 19)
 REC_O_TOP2          = (1772, 962, 94, 24)
